@@ -71,6 +71,57 @@ export function useWallet() {
     }
   }, [isMetaMaskAvailable])
 
+  // Switch to Sepolia network
+  const switchToSepolia = useCallback(async () => {
+    if (!isMetaMaskAvailable()) {
+      setWalletState(prev => ({
+        ...prev,
+        error: 'MetaMask is not installed'
+      }))
+      return
+    }
+
+    try {
+      // Try to switch to Sepolia testnet
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0xaa36a7' }], // Sepolia chainId in hex
+      })
+    } catch (switchError: any) {
+      // If the network doesn't exist, add it
+      if (switchError.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [{
+              chainId: '0xaa36a7',
+              chainName: 'Sepolia Test Network',
+              rpcUrls: [process.env.NEXT_PUBLIC_SEPOLIA_RPC_URL || 'https://ethereum-sepolia.rpc.subquery.network/public'],
+              blockExplorerUrls: ['https://sepolia.etherscan.io'],
+              nativeCurrency: {
+                name: 'SepoliaETH',
+                symbol: 'SepoliaETH',
+                decimals: 18,
+              },
+            }],
+          })
+        } catch (addError) {
+          console.error('Failed to add Sepolia network:', addError)
+          setWalletState(prev => ({
+            ...prev,
+            error: 'Failed to add Sepolia network'
+          }))
+        }
+      } else {
+        console.error('Failed to switch to Sepolia:', switchError)
+        setWalletState(prev => ({
+          ...prev,
+          error: 'Failed to switch to Sepolia network'
+        }))
+      }
+    }
+  }, [isMetaMaskAvailable])
+
   // Disconnect wallet
   const disconnect = useCallback(() => {
     setWalletState({
@@ -161,6 +212,7 @@ export function useWallet() {
     connect,
     connectMock,
     disconnect,
+    switchToSepolia,
     isConnecting,
     isMetaMaskAvailable: isMetaMaskAvailable()
   }

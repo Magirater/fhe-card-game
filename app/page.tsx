@@ -9,7 +9,7 @@ import './page.css'
 
 export default function Home() {
   const router = useRouter()
-  const { isConnected, address, chainId, connect, isConnecting, error } = useWallet()
+  const { isConnected, address, chainId, connect, isConnecting, error, switchToSepolia } = useWallet()
   const [isLoading, setIsLoading] = useState(false)
 
   const handlePlayGame = async (mode: 'pve' | 'demo') => {
@@ -54,10 +54,19 @@ export default function Home() {
                 Connected to Sepolia Network
               </span>
             ) : (
-              <span className="network-badge network-wrong">
-                <span className="network-dot"></span>
-                Wrong Network - Please switch to Sepolia
-              </span>
+              <div className="network-warning">
+                <span className="network-badge network-wrong">
+                  <span className="network-dot"></span>
+                  Wrong Network - Please switch to Sepolia
+                </span>
+                <button
+                  onClick={switchToSepolia}
+                  className="switch-network-button"
+                  disabled={isLoading}
+                >
+                  Switch to Sepolia
+                </button>
+              </div>
             )}
           </div>
         )}

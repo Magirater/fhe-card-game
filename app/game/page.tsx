@@ -489,7 +489,7 @@ function GameContent() {
           <p className="game-subtitle">
             {mode === 'demo' 
               ? (playerHand.length === 0 ? 'Click "Start Demo Game" to begin' : 'Demo game in progress...')
-              : 'Play against an intelligent bot with <span className="highlight-text">FHE-encrypted</span> card comparisons'
+              : 'Play against an intelligent bot'
             }
           </p>
         </header>

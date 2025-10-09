@@ -191,10 +191,15 @@ contract MockFHEVMGame {
     }
 
     function mockTFHEdecrypt(string memory encrypted) external pure returns (uint8) {
-        // Simple mock decryption
+        // Simple mock decryption - extract number from "encrypted_X" format
         bytes memory data = bytes(encrypted);
         if (data.length > 10) {
-            return uint8(data[data.length - 1]);
+            // Find the last digit in the string
+            for (uint i = data.length - 1; i >= 0; i--) {
+                if (data[i] >= 0x30 && data[i] <= 0x39) { // ASCII digits 0-9
+                    return uint8(uint8(data[i]) - 0x30);
+                }
+            }
         }
         return 1;
     }

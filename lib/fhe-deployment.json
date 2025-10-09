@@ -1,0 +1,9 @@
+{
+  "address": "0x0000000000000000000000000000000000000000",
+  "abi": [],
+  "network": "fhevm-testnet",
+  "chainId": "42069",
+  "contract": "FHECardGame",
+  "deployedAt": "2024-01-01T00:00:00.000Z",
+  "description": "FHE Card Game contract will be deployed on zama  with full homomorphic encryption support"
+}
