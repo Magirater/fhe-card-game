@@ -1,6 +1,6 @@
 # FHE Card Game
 
-A revolutionary card game demonstrating **Fully Homomorphic Encryption (FHE)** technology on Ethereum blockchain. Play against an AI bot with complete privacy - your cards remain encrypted throughout the entire game, and all comparisons happen without revealing card values.
+A revolutionary card game demonstrating **Fully Homomorphic Encryption (FHE)** technology on Ethereum blockchain. Play against an intelligent bot with complete privacy - your cards remain encrypted throughout the entire game, and all comparisons happen without revealing card values.
 
 > **⚠️ Important Note**: Currently, it's not possible to deploy the true FHE version to Zama testnet. The current implementation uses a **mock version** on Sepolia testnet that simulates FHE operations for demonstration purposes.
 
