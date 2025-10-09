@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx next dev",
-    "build": "npx next build",
+    "build": "npx next build --output public",
     "start": "npx next start",
     "compile": "npx hardhat compile",
     "test": "npx hardhat test solidity",
