@@ -524,7 +524,7 @@ export function useMockFHEVMGame(walletState: WalletState) {
 - **Note**: Uses `MockFHEVMGame.sol` contract that simulates FHE operations
 
 ### Zama Testnet (True FHE) - Currently Unavailable
-- **Chain ID**: 42069
+- **Chain ID**: 
 - **Type**: True FHE implementation (not currently deployable)
 - **RPC URL**: Configure in `.env` as `ZAMA_RPC_URL`
 - **Contract Address**: Deploy using `npm run deploy-fhe` (when available)
