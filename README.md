@@ -375,7 +375,7 @@ cp .env.example .env
 ```env
 PRIVATE_KEY=your_private_key_here
 SEPOLIA_RPC_URL=https://ethereum-sepolia.rpc.subquery.network/public
-ZAMA_RPC_URL=https://api.testnet.fhenix.zone
+ZAMA_RPC_URL=ZAMA_RPC
 ```
 
 **Important:** Replace the RPC URLs with your actual endpoints from your provider.
